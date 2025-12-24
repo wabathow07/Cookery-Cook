@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Beef Taco",
+    "ingredients": [
+      "ground_beef",
+      "taco_shells",
+      "onion",
+      "tomato",
+      "lettuce",
+      "cheddar_cheese",
+      "taco_seasoning"
+    ]
+  },
+  {
+    "name": "Caesar Salad",
+    "ingredients": [
+      "romaine_lettuce",
+      "crouton",
+      "parmesan_cheese",
+      "caesar_dressing",
+      "grilled_chicken"
+    ]
+  },
+  {
+    "name": "Chicken Stir Fry",
+    "ingredients": [
+      "chicken_breast",
+      "red_bell_pepper",
+      "green_bell_pepper",
+      "onion",
+      "soy_sauce",
+      "sesame_oil",
+      "garlic",
+      "ginger"
+    ]
+  },
+  {
+    "name": "Chocolate Chip Cookie",
+    "ingredients": [
+      "flour",
+      "sugar",
+      "butter",
+      "egg",
+      "chocolate_chip",
+      "vanilla_extract",
+      "baking_powder"
+    ]
+  },
+  {
+    "name": "Grilled Salmon",
+    "ingredients": [
+      "salmon_fillet",
+      "lemon",
+      "olive_oil",
+      "salt",
+      "pepper"
+    ]
+  },
+  {
+    "name": "Pancake",
+    "ingredients": [
+      "flour",
+      "egg",
+      "milk",
+      "sugar",
+      "baking_powder",
+      "butter"
+    ]
+  },
+  {
+    "name": "Shrimp Fried Rice",
+    "ingredients": [
+      "shrimp",
+      "cooked_rice",
+      "egg",
+      "carrot",
+      "onion",
+      "soy_sauce",
+      "vegetable_oil",
+      "garlic"
+    ]
+  },
+  {
+    "name": "Spaghetti Carbonara",
+    "ingredients": [
+      "spaghetti",
+      "pancetta",
+      "egg",
+      "parmesan_cheese",
+      "garlic",
+      "salt",
+      "pepper"
+    ]
+  },
+  {
+    "name": "Tomato Soup",
+    "ingredients": [
+      "tomato",
+      "onion",
+      "garlic",
+      "vegetable_broth",
+      "olive_oil",
+      "salt",
+      "pepper"
+    ]
+  },
+  {
+    "name": "Vegetable Curry",
+    "ingredients": [
+      "potato",
+      "carrot",
+      "zucchini",
+      "coconut_milk",
+      "curry_paste",
+      "onion",
+      "olive_oil",
+      "garlic"
+    ]
+  }
+]
