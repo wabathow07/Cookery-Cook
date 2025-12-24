@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CookeryCook - Fridge</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="assets/interactives/normal_chick.png" />
+    <script defer src="js/audio.js"></script>
+    <script defer src="js/fridge.js"></script>
+  </head>
+
+  <body class="fridge-screen">
+    <div class="search-area">
+      <div class="search-wrapper">
+        <input
+          type="text"
+          id="ingredientInput"
+          placeholder="enter ingredient..."
+          autocomplete="off"
+        />
+
+        <button id="searchBtn">
+          <img src="assets/buttons/search_button.png" />
+        </button>
+
+        <ul id="ingredientSuggestions" class="suggestions"></ul>
+      </div>
+    </div>
+
+    <button class="camera-btn" onclick="location.href='scanner.html'">
+      <img src="assets/buttons/camera.png" />
+    </button>
+
+    <div id="ingredientList" class="fridge-items"></div>
+
+    <button class="next-btn" onclick="location.href='recipes.html'">
+      <img src="assets/buttons/next_button.png" />
+    </button>
+
+    <div id="clickEffect"></div>
+  </body>
+</html>

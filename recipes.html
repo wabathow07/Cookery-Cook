@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CookeryCook - Recipes</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="assets/interactives/normal_chick.png" />
+    <script defer src="js/audio.js"></script>
+    <script defer src="js/recipes.js"></script>
+    <link
+      rel="preload"
+      href="assets/backgrounds/recipes_screen0.png"
+      as="image"
+    />
+  </head>
+  <body class="recipes-screen">
+    <div class="bg-layer"></div>
+    <div id="screenWrap">
+      <img src="assets/buttons/bookmark.png" id="bookmark" class="bookmark" />
+
+      <div class="recipes-list" id="recipesContainer"></div>
+
+      <div id="recipeDescription" class="recipe-desc"></div>
+
+      <button class="back-btn" onclick="location.href='fridge.html'">
+        <img src="assets/buttons/back_button.png" />
+      </button>
+
+      <button class="next-btn" onclick="location.href='kitchen.html'">
+        <img src="assets/buttons/next_button.png" />
+      </button>
+
+      <img
+        id="pageLeft"
+        class="page-arrow"
+        src="assets/buttons/left_page_changer.png"
+      />
+      <img
+        id="pageRight"
+        class="page-arrow"
+        src="assets/buttons/right_page_changer.png"
+      />
+
+      <div id="clickEffect"></div>
+    </div>
+  </body>
+</html>

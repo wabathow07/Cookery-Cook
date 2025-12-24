@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CookeryCook - Kitchen</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="assets/interactives/normal_chick.png" />
+    <script defer src="js/audio.js"></script>
+    <script defer src="js/kitchen.js"></script>
+  </head>
+  <body class="kitchen-screen">
+    <img id="recipeFull" class="recipe-full" />
+    <img id="stepImage" class="step-image" />
+
+    <button id="stepNext" class="step-next"></button>
+
+    <button class="back-btn" onclick="location.href='recipes.html'">
+      <img src="assets/buttons/back_button.png" />
+    </button>
+
+    <button class="finish-btn" onclick="location.href='final.html'">
+      <img src="assets/buttons/finish.png" />
+    </button>
+
+    <img id="kitchenAnimation" class="kitchen-animation" />
+
+    <div id="clickEffect"></div>
+  </body>
+</html>

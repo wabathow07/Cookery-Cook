@@ -1,0 +1,667 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  font-family: Arial;
+}
+
+/* SCREEN BACKGROUNDS */
+.start-screen {
+  background: url("../assets/backgrounds/start_screen.png") center/cover
+    no-repeat;
+}
+
+.fridge-screen {
+  background: url("../assets/backgrounds/fridge_screen.png") center/cover
+    no-repeat;
+}
+
+.kitchen-screen {
+  background: url("../assets/backgrounds/kitchen_screen.png") center/cover
+    no-repeat;
+}
+
+.final-screen {
+  background: url("../assets/backgrounds/final_screen.png") center/cover
+    no-repeat;
+}
+
+.scanner-screen {
+  background: url("../assets/backgrounds/AI_screen.png") center/cover no-repeat;
+}
+
+.start-screen,
+.fridge-screen,
+.recipes-screen,
+.kitchen-screen,
+.final-screen,
+.scanner-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 1440px;
+  height: 765px;
+
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 1440px 765px;
+
+  overflow: hidden;
+}
+
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 1440px;
+  height: 765px;
+
+  background: url("../assets/backgrounds/recipes_screen.png") top left no-repeat;
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 1440px 765px;
+
+  transition: filter 1.2s ease;
+  z-index: -1;
+}
+
+.bg-layer.blurred {
+  filter: blur(10px);
+}
+
+.chicken {
+  position: absolute;
+  top: 81px;
+  right: 210px;
+  width: 100px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.click-ripple {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  animation: clickRippleAnim 0.7s ease-out forwards;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8),
+    0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes clickRippleAnim {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+  60% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(3.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(5);
+  }
+}
+
+.main-btn,
+.next-btn,
+.back-btn,
+.finish-btn {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.main-btn img,
+.next-btn img,
+.back-btn img,
+.finish-btn img {
+  display: block;
+  width: 200px;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.2s ease;
+}
+
+/* === HOVER: Grow === */
+.main-btn:hover img,
+.next-btn:hover img,
+.back-btn:hover img,
+.finish-btn:hover img {
+  transform: scale(1.15);
+}
+
+/* === CLICK (active): Bounce pop === */
+.main-btn:active img,
+.next-btn:active img,
+.back-btn:active img,
+.finish-btn:active img {
+  animation: btnBounce 0.2s ease;
+}
+
+/* Bounce animation */
+@keyframes btnBounce {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+/* ========= BUTTON POSITIONING ========= */
+.main-btn {
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  bottom: 150px;
+  transform: translateX(-40%);
+}
+
+.next-btn {
+  position: absolute;
+  right: 1px;
+  bottom: 40px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 11px;
+  bottom: 40px;
+}
+
+.kitchen-screen .back-btn {
+  left: 35px;
+  bottom: 673px;
+}
+
+.final-screen .back-btn {
+  left: 35px;
+  bottom: 670px;
+}
+
+.scanner-screen .back-btn {
+  left: 20px;
+  bottom: 40px;
+}
+
+.finish-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 575px;
+}
+
+/* Bookmark animation when clicked */
+.bookmark {
+  position: absolute;
+  top: 280px;
+  left: 141px;
+  width: 180px;
+  cursor: pointer;
+  transition: transform 1s ease, opacity 1s ease, right 1s ease;
+}
+
+.bookmark.clicked {
+  opacity: 0;
+  right: 95%;
+  transform: translateX(-400px) rotate(-20deg);
+}
+
+/* Smooth blur */
+.screen-blur {
+  filter: blur(10px);
+  transition: filter 1.2s ease;
+}
+
+body {
+  transition: background-image 0.8s ease, filter 1.2s ease;
+}
+
+#screenWrap {
+  width: 1440px;
+  height: 765px;
+  transition: filter 1s ease;
+}
+
+#screenWrap.screen-blur {
+  filter: blur(5px);
+}
+
+.search-wrapper {
+  position: absolute;
+  top: 190px;
+  left: 265px;
+  width: 320px;
+  height: 80px;
+  background: url("../assets/buttons/search_bar.png") no-repeat center/contain;
+}
+
+#ingredientInput {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  width: 220px;
+  height: 40px;
+  font-size: 20px;
+  border: none;
+  background: none;
+  outline: none;
+  color: black;
+}
+
+#searchBtn {
+  position: absolute;
+  left: 170px;
+  top: 53%;
+  transform: translateY(-50%);
+  width: 390px; /* matches your PNG button size */
+  height: auto;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#searchBtn img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* AUTOCOMPLETE DROPDOWN */
+.suggestions {
+  position: absolute;
+  top: 82px; /* appears under search bar image */
+  left: 0;
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  display: none;
+  max-height: 150px;
+  overflow-y: auto;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+.suggestions li {
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background: #ffe6a7;
+}
+
+.suggestions li.active {
+  background: #ffe6a7;
+  font-weight: bold;
+}
+
+/* FRIDGE INGREDIENT GRID (4 per row) */
+#ingredientList {
+  position: absolute;
+  right: 575px;
+  top: 240px;
+
+  width: 70px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 10px;
+  row-gap: 35px;
+  padding: 10px;
+}
+
+/* Ingredient item wrapper */
+.ingredient-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+}
+
+/* Ingredient PNG */
+.ingredient-item img {
+  width: 70px;
+  height: auto;
+}
+
+.remove-ingredient {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.remove-ingredient img {
+  width: 30px; /* adjust size to match PNG */
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.15s ease;
+}
+
+.remove-ingredient:hover img {
+  transform: scale(1.1);
+}
+
+.remove-ingredient:active img {
+  transform: scale(0.9);
+}
+
+/* Tooltip container */
+.ingredient-item {
+  position: relative;
+}
+
+/* Tooltip box */
+.ingredient-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  margin-bottom: 6px;
+}
+
+/* arrow */
+.ingredient-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+}
+
+/* show tooltip */
+.ingredient-item:hover .ingredient-tooltip {
+  opacity: 1;
+}
+
+.page-arrow {
+  position: absolute;
+  top: 680px;
+  width: 120px;
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(-50%);
+}
+
+#pageLeft {
+  left: 360px;
+}
+
+#pageRight {
+  left: 550px;
+}
+
+.recipes-list {
+  position: absolute;
+  top: 319px;
+  left: 311px;
+  width: 404px;
+  display: block;
+}
+
+.recipes-list button {
+  width: 404px;
+  height: 106px;
+  display: block;
+  background: none;
+  border: none;
+}
+
+.recipes-list button:first-of-type {
+  margin-top: 0 !important;
+}
+
+.recipe-preview {
+  width: 100%;
+  height: 120%;
+  display: block;
+}
+
+.full-recipe-image {
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  height: 100%;
+  right: 170px;
+  display: block;
+}
+
+#recipeDescription {
+  position: absolute;
+  top: -10px;
+  right: 150px;
+  width: 410px;
+  height: 520px;
+}
+
+.step-image {
+  position: absolute;
+  bottom: -14.5px;
+  left: 785px;
+  transform: translateX(-50%);
+  width: 1210px;
+  height: auto;
+}
+
+.step-next {
+  position: absolute;
+  bottom: 6px;
+  left: 1300px;
+  transform: translateX(-50%);
+
+  width: 100px;
+  height: 50px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#finalDishBox {
+  position: absolute;
+  top: 480px;
+  left: 860px;
+  transform: translateX(-50%);
+  width: 406px;
+  height: 256px;
+  text-align: center;
+}
+
+.final-dish-img {
+  width: 100%;
+  height: 100%;
+}
+
+.camera-btn {
+  position: absolute;
+  top: 270px;
+  left: 591px;
+
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  transition: transform 0.2s ease;
+}
+
+.camera-btn img {
+  width: 75px;
+  height: auto;
+  object-fit: contain;
+}
+
+.camera-btn:hover {
+  transform: scale(1.15);
+}
+
+.camera-btn:active {
+  transform: scale(0.9);
+}
+
+#video {
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  position: absolute;
+  top: 263px;
+  left: 470px;
+  z-index: 5;
+}
+
+#overlay {
+  position: absolute; /* already absolute/fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so clicks pass through to buttons/video if needed */
+  z-index: 10; /* higher than video */
+}
+
+#result {
+  color: black;
+  position: absolute;
+  top: 650px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-family: "Press Start 2P", cursive;
+}
+
+#progressBar {
+  position: absolute;
+  top: 690px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 18px;
+  background: #222;
+  border: 3px solid #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  image-rendering: pixelated;
+}
+
+#progressFill {
+  width: 0%;
+  height: 100%;
+  background: #00ff00;
+  transition: width 0.1s linear;
+  image-rendering: pixelated;
+}
+
+#screenshotBtn {
+  position: absolute;
+  top: 170px;
+  left: 850px;
+
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  transition: transform 0.2s ease;
+}
+
+#screenshotBtn img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+#screenshotBtn:hover {
+  transform: scale(1.15);
+}
+
+#screenshotBtn:active {
+  transform: scale(0.9);
+}
+
+#result img.ok-btn {
+  width: 150px;
+  position: absolute;
+  right: -120px;
+  bottom: -10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s;
+}
+
+#result img.yes-btn {
+  width: 150px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.2s ease, opacity 0.2s;
+}
+
+#result img.no-btn {
+  width: 150px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.2s ease, opacity 0.2s;
+}
+
+#result img.ok-btn:hover,
+#result img.yes-btn:hover,
+#result img.no-btn:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.kitchen-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 765px;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: -1;
+}

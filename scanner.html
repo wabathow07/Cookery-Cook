@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CookeryCook - Scan Ingredient</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/interactives/normal_chick.png"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/inferencejs@1.1.3"></script>
+    <script defer src="js/scanner.js"></script>
+  </head>
+
+  <body class="scanner-screen loading">
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="overlay"></canvas>
+
+    <div id="result">Waiting...</div>
+    <button class="back-btn" onclick="location.href='fridge.html'">
+      <img src="assets/buttons/back_button.png" />
+    </button>
+
+    <div id="fps">0 fps</div>
+    <button id="screenshotBtn"><img src="assets/buttons/camera.png" /></button>
+  </body>
+</html>
